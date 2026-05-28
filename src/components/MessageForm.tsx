@@ -4,15 +4,15 @@ import {
   createBrowserClient,
   getSupabaseConfigError,
 } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import type { LoveNote } from "@/lib/types";
 import { FormEvent, useState } from "react";
 
 type MessageFormProps = {
   disabled?: boolean;
+  onPosted?: (note: LoveNote) => void;
 };
 
-export function MessageForm({ disabled = false }: MessageFormProps) {
-  const router = useRouter();
+export function MessageForm({ disabled = false, onPosted }: MessageFormProps) {
   const [organizationName, setOrganizationName] = useState("");
   const [message, setMessage] = useState("");
   const [supporterName, setSupporterName] = useState("");
@@ -40,11 +40,15 @@ export function MessageForm({ disabled = false }: MessageFormProps) {
     setStatus("loading");
     setErrorMessage("");
 
-    const { error } = await supabase.from("love_notes").insert({
-      organization_name: organizationName.trim(),
-      message: message.trim(),
-      supporter_name: supporterName.trim() || null,
-    });
+    const { data, error } = await supabase
+      .from("love_notes")
+      .insert({
+        organization_name: organizationName.trim(),
+        message: message.trim(),
+        supporter_name: supporterName.trim() || null,
+      })
+      .select("id, organization_name, message, supporter_name, created_at")
+      .single();
 
     if (error) {
       setStatus("error");
@@ -60,7 +64,10 @@ export function MessageForm({ disabled = false }: MessageFormProps) {
     setMessage("");
     setSupporterName("");
     setStatus("success");
-    router.refresh();
+
+    if (data) {
+      onPosted?.(data);
+    }
   }
 
   return (
