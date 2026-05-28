@@ -74,7 +74,13 @@ export async function submitContactInquiry(
     return { ok: false, error: error.message };
   }
 
-  await sendContactNotification(validated);
+  const notification = await sendContactNotification(validated);
+
+  if (!notification.ok) {
+    console.error("Contact notification failed:", notification.reason);
+  } else {
+    console.info("Contact notification sent:", notification.id ?? "ok");
+  }
 
   return { ok: true };
 }
