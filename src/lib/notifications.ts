@@ -8,7 +8,17 @@ export async function sendContactNotification(
   const fromEmail =
     process.env.RESEND_FROM_EMAIL ?? "DOTS <onboarding@resend.dev>";
 
-  if (!apiKey || !notifyEmail) {
+  if (!apiKey) {
+    console.warn(
+      "Contact notification skipped: RESEND_API_KEY is not set.",
+    );
+    return;
+  }
+
+  if (!notifyEmail) {
+    console.warn(
+      "Contact notification skipped: NOTIFY_EMAIL is not set.",
+    );
     return;
   }
 
@@ -24,7 +34,7 @@ export async function sendContactNotification(
   ].filter(Boolean);
 
   try {
-    await fetch("https://api.resend.com/emails", {
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -37,6 +47,18 @@ export async function sendContactNotification(
         text: lines.join("\n"),
       }),
     });
+
+    if (!response.ok) {
+      const body = await response.text();
+      console.error(
+        `Resend API error (${response.status}): ${body}`,
+      );
+      return;
+    }
+
+    console.info(
+      `Contact notification sent to ${notifyEmail} via ${fromEmail}`,
+    );
   } catch (error) {
     console.error("Failed to send contact notification:", error);
   }

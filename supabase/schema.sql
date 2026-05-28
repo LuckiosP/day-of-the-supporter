@@ -13,11 +13,13 @@ create index if not exists love_notes_created_at_idx
 
 alter table public.love_notes enable row level security;
 
+drop policy if exists "Anyone can read love notes" on public.love_notes;
 create policy "Anyone can read love notes"
   on public.love_notes
   for select
   using (true);
 
+drop policy if exists "Anyone can post love notes" on public.love_notes;
 create policy "Anyone can post love notes"
   on public.love_notes
   for insert
@@ -39,6 +41,7 @@ create index if not exists contact_inquiries_created_at_idx
 
 alter table public.contact_inquiries enable row level security;
 
+drop policy if exists "Anyone can submit contact inquiries" on public.contact_inquiries;
 create policy "Anyone can submit contact inquiries"
   on public.contact_inquiries
   for insert

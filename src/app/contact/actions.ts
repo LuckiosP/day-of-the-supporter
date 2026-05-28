@@ -1,3 +1,5 @@
+"use server";
+
 import { createServerClient } from "@/lib/supabase/server";
 import type { ContactInquiryInput } from "@/lib/types";
 import { sendContactNotification } from "@/lib/notifications";
