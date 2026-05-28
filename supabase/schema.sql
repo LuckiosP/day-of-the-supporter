@@ -22,3 +22,24 @@ create policy "Anyone can post love notes"
   on public.love_notes
   for insert
   with check (true);
+
+-- Contact / get involved form submissions
+
+create table if not exists public.contact_inquiries (
+  id uuid primary key default gen_random_uuid(),
+  email text not null check (char_length(email) between 3 and 254),
+  name text check (name is null or char_length(name) <= 100),
+  organisation text check (organisation is null or char_length(organisation) <= 100),
+  message text check (message is null or char_length(message) <= 1000),
+  created_at timestamptz not null default now()
+);
+
+create index if not exists contact_inquiries_created_at_idx
+  on public.contact_inquiries (created_at desc);
+
+alter table public.contact_inquiries enable row level security;
+
+create policy "Anyone can submit contact inquiries"
+  on public.contact_inquiries
+  for insert
+  with check (true);

@@ -23,7 +23,6 @@ export const DOTS_DATE_PARTS = {
 } as const;
 
 export const DOTS_HASHTAG = "#DayOfTheSupporter";
-export const CONTACT_EMAIL = "hello@dayofthesupporter.org";
 
 export const PROMPT_EXAMPLES = [
   "Our supporters mean the world to us because…",
