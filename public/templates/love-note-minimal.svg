@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <rect width="1200" height="675" fill="#FAF8F5"/>
+
+  <line x1="100" y1="100" x2="300" y2="100" stroke="#C17F59" stroke-width="3"/>
+
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="14" fill="#78716C" letter-spacing="3">
+    DAY OF THE SUPPORTER
+  </text>
+
+  <text x="100" y="280" font-family="Georgia, serif" font-size="44" fill="#292524" font-style="italic">
+    Our supporters mean the world to us because&
+  </text>
+
+  <line x1="100" y1="420" x2="900" y2="420" stroke="#E7E5E4" stroke-width="1"/>
+
+  <text x="100" y="400" font-family="Arial, sans-serif" font-size="16" fill="#A8A29E">
+    Your one sentence
+  </text>
+
+  <text x="100" y="560" font-family="Arial, sans-serif" font-size="20" fill="#78716C">
+    [Your charity name]
+  </text>
+
+  <text x="100" y="610" font-family="Arial, sans-serif" font-size="16" fill="#C17F59">
+    #DayOfTheSupporter
+  </text>
+</svg>

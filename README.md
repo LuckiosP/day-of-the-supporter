@@ -22,8 +22,23 @@ $env:NODE_OPTIONS="--use-system-ca"; npm install
 - **Home** — Purpose, date, and call to action
 - **How to take part** — 60-second participation guide
 - **Templates** — Downloadable Supporter Love Note graphics
+- **Wall** — Public message board for love notes
 - **About** — Why supporters matter and why this day exists
 - **Get involved** — Contact and updates signup
+
+## Message board (Supabase)
+
+The wall at `/wall` stores love notes in Supabase.
+
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Run the SQL in `supabase/schema.sql` in the Supabase SQL Editor
+3. Copy `.env.example` to `.env.local` and add your project URL and anon key
+4. Add the same variables in Vercel → Project → Settings → Environment Variables
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
 
 ## Configuration
 

@@ -27,6 +27,13 @@ const STEPS = [
     title: "Use the hashtag",
     description: `Add ${DOTS_HASHTAG} so your gratitude joins the sector-wide wall.`,
   },
+  {
+    number: "5",
+    title: "Post to the wall (optional)",
+    description:
+      "Share your love note on the DOTS website too — a public message board for the sector.",
+    action: { label: "Visit the wall", href: "/wall" },
+  },
 ];
 
 export const metadata = {

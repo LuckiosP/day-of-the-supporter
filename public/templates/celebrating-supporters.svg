@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF8F5"/>
+      <stop offset="100%" style="stop-color:#F0EDE8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <circle cx="100" cy="100" r="140" fill="#8A9A7B" opacity="0.12"/>
+  <circle cx="1100" cy="575" r="160" fill="#C17F59" opacity="0.08"/>
+
+  <text x="600" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#78716C" letter-spacing="4">
+    DAY OF THE SUPPORTER
+  </text>
+
+  <text x="600" y="210" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#292524" font-style="italic">
+    Today we're celebrating our supporters for&
+  </text>
+
+  <line x1="180" y1="370" x2="1020" y2="370" stroke="#D6D3D1" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <text x="600" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#A8A29E">
+    Write your one sentence here
+  </text>
+
+  <text x="600" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#78716C">
+    [Your charity name]
+  </text>
+
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#C17F59" letter-spacing="1">
+    #DayOfTheSupporter
+  </text>
+</svg>

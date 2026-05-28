@@ -15,6 +15,7 @@ export const PROMPT_EXAMPLES = [
 export const NAV_LINKS = [
   { href: "/how-to", label: "How to take part" },
   { href: "/templates", label: "Templates" },
+  { href: "/wall", label: "Wall" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Get involved" },
 ] as const;

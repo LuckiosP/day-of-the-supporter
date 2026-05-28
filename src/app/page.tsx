@@ -29,6 +29,9 @@ export default function HomePage() {
             <Button href="/templates" variant="secondary">
               Download the template
             </Button>
+            <Button href="/wall" variant="secondary">
+              Visit the wall
+            </Button>
           </div>
         </Container>
       </section>
