@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  createBrowserClient,
-  getSupabaseConfigError,
-} from "@/lib/supabase/client";
+import { postLoveNote } from "@/app/wall/actions";
 import type { LoveNote } from "@/lib/types";
 import { FormEvent, useState } from "react";
 
@@ -28,35 +25,18 @@ export function MessageForm({ disabled = false, onPosted }: MessageFormProps) {
       return;
     }
 
-    const supabase = createBrowserClient();
-    const configError = getSupabaseConfigError();
-
-    if (!supabase || configError) {
-      setStatus("error");
-      setErrorMessage(configError ?? "Message board is not configured yet.");
-      return;
-    }
-
     setStatus("loading");
     setErrorMessage("");
 
-    const { data, error } = await supabase
-      .from("love_notes")
-      .insert({
-        organization_name: organizationName.trim(),
-        message: message.trim(),
-        supporter_name: supporterName.trim() || null,
-      })
-      .select("id, organization_name, message, supporter_name, created_at")
-      .single();
+    const result = await postLoveNote({
+      organization_name: organizationName,
+      message,
+      supporter_name: supporterName || undefined,
+    });
 
-    if (error) {
+    if (!result.ok) {
       setStatus("error");
-      setErrorMessage(
-        error.message.includes("<!DOCTYPE") || error.message.includes("404")
-          ? "Could not reach Supabase. Check NEXT_PUBLIC_SUPABASE_URL in Vercel — it must be https://xxxxx.supabase.co"
-          : error.message,
-      );
+      setErrorMessage(result.error);
       return;
     }
 
@@ -64,10 +44,7 @@ export function MessageForm({ disabled = false, onPosted }: MessageFormProps) {
     setMessage("");
     setSupporterName("");
     setStatus("success");
-
-    if (data) {
-      onPosted?.(data);
-    }
+    onPosted?.(result.note);
   }
 
   return (
@@ -79,6 +56,10 @@ export function MessageForm({ disabled = false, onPosted }: MessageFormProps) {
       <p className="mt-2 text-sm text-stone-600">
         One sentence of gratitude from your charity. Posted to the wall
         immediately.
+      </p>
+      <p className="mt-2 text-xs text-stone-500">
+        Messages are checked automatically to keep the wall warm, grateful, and
+        welcoming.
       </p>
 
       <div className="mt-6 space-y-4">
@@ -153,7 +134,7 @@ export function MessageForm({ disabled = false, onPosted }: MessageFormProps) {
         disabled={disabled || status === "loading"}
         className="mt-6 w-full rounded-full bg-accent px-6 py-3 text-base font-medium text-white transition-colors hover:bg-accent-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
-        {status === "loading" ? "Posting…" : "Post to the wall"}
+        {status === "loading" ? "Checking and posting…" : "Post to the wall"}
       </button>
 
       {status === "success" && (
