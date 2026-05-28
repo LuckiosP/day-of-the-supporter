@@ -19,9 +19,10 @@ export function Button({
   const baseStyles =
     "inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium transition-colors";
   const variants = {
-    primary: "bg-accent text-white hover:bg-accent-dark",
+    primary:
+      "bg-accent text-white shadow-md shadow-accent/20 hover:bg-accent-dark",
     secondary:
-      "border border-stone-300 bg-white text-stone-800 hover:border-stone-400 hover:bg-stone-50",
+      "border border-accent/20 bg-white text-stone-800 hover:border-accent/40 hover:bg-celebration",
   };
 
   const styles = `${baseStyles} ${variants[variant]} ${className}`;

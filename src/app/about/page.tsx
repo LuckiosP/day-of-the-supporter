@@ -1,5 +1,7 @@
 import { Container } from "@/components/Container";
+import { EventDate } from "@/components/EventDate";
 import { PageHeader } from "@/components/PageHeader";
+import { DOTS_DATE } from "@/lib/constants";
 
 export const metadata = {
   title: "About",
@@ -10,10 +12,24 @@ export default function AboutPage() {
     <Container className="py-16 sm:py-24">
       <PageHeader
         title="About Day of the Supporter"
-        description="A simple ritual of gratitude for the charitable sector."
+        description="A joyful, sector-wide celebration of the people behind charitable work."
       />
 
+      <EventDate variant="banner" className="mb-12" />
+
       <div className="prose-dots space-y-10">
+        <section>
+          <h2 className="font-serif text-2xl font-medium text-stone-900">
+            When is DOTS?
+          </h2>
+          <p className="mt-4 leading-relaxed text-stone-600">
+            Day of the Supporter takes place on {DOTS_DATE}. The date is chosen
+            to sit clear of major calendar clashes — including US Election Day,
+            Remembrance commemorations, and Giving Tuesday — so charities can
+            give supporters a moment that is truly theirs.
+          </p>
+        </section>
+
         <section>
           <h2 className="font-serif text-2xl font-medium text-stone-900">
             Why supporters matter
@@ -33,10 +49,10 @@ export default function AboutPage() {
           </h2>
           <p className="mt-4 leading-relaxed text-stone-600">
             Day of the Supporter (DOTS) is a sector-wide moment to pause and
-            celebrate. Not a campaign, not a fundraiser — just a shared ritual
-            where every charity completes one sentence of gratitude and posts
-            it on the same day. The aim is to make supporters feel seen, staff
-            feel proud, and participation embarrassingly easy.
+            celebrate. Not a campaign, not a fundraiser — a shared ritual of
+            joy where every charity completes one sentence of gratitude and
+            posts it on the same day. The aim is to make supporters feel seen,
+            staff feel proud, and participation embarrassingly easy.
           </p>
         </section>
 

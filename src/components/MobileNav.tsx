@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { EventDate } from "@/components/EventDate";
 import { NAV_LINKS } from "@/lib/constants";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -40,7 +41,8 @@ export function MobileNav() {
       </button>
 
       {open && (
-        <nav className="absolute left-0 right-0 top-full border-b border-stone-200 bg-cream px-6 py-4">
+        <nav className="absolute left-0 right-0 top-full border-b border-accent/10 bg-cream px-6 py-4">
+          <EventDate variant="compact" className="mb-4" />
           <ul className="space-y-3">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

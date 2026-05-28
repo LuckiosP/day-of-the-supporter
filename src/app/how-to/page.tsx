@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
+import { EventDate } from "@/components/EventDate";
 import { PageHeader } from "@/components/PageHeader";
 import { DOTS_DATE, DOTS_HASHTAG } from "@/lib/constants";
 
@@ -8,7 +9,7 @@ const STEPS = [
     number: "1",
     title: "Download the template",
     description:
-      "Grab the universal Supporter Love Note graphic — available as SVG and PNG.",
+      "Grab a Supporter Love Note graphic — ready to personalise in seconds.",
     action: { label: "Get templates", href: "/templates" },
   },
   {
@@ -20,18 +21,18 @@ const STEPS = [
   {
     number: "3",
     title: "Post it on the day",
-    description: `Share your love note on ${DOTS_DATE} across your social channels.`,
+    description: `On ${DOTS_DATE}, share your love note across your social channels.`,
   },
   {
     number: "4",
     title: "Use the hashtag",
-    description: `Add ${DOTS_HASHTAG} so your gratitude joins the sector-wide wall.`,
+    description: `Add ${DOTS_HASHTAG} so your gratitude joins the sector-wide celebration.`,
   },
   {
     number: "5",
     title: "Post to the wall (optional)",
     description:
-      "Share your love note on the DOTS website too — a public message board for the sector.",
+      "Share your love note on the DOTS website too — a public wall of gratitude for the sector.",
     action: { label: "Visit the wall", href: "/wall" },
   },
 ];
@@ -48,13 +49,15 @@ export default function HowToPage() {
         description="Everything you need in under 60 seconds. No budget, no sign-off, no coordination required."
       />
 
+      <EventDate variant="banner" className="mb-12" />
+
       <ol className="space-y-8">
         {STEPS.map((step) => (
           <li
             key={step.number}
-            className="flex gap-6 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm"
+            className="flex gap-6 rounded-2xl border border-accent/10 bg-white p-6 shadow-sm"
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10 font-serif text-lg font-medium text-accent">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-medium text-accent-dark">
               {step.number}
             </span>
             <div>
@@ -76,11 +79,11 @@ export default function HowToPage() {
         ))}
       </ol>
 
-      <aside className="mt-12 rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-6">
-        <p className="text-sm font-medium text-stone-700">Optional</p>
+      <aside className="mt-12 rounded-2xl border border-dashed border-accent/25 bg-celebration p-6">
+        <p className="text-sm font-semibold text-accent-dark">Optional</p>
         <p className="mt-2 leading-relaxed text-stone-600">
-          Join a shared moment of pause at 12:00 noon on the day — a brief
-          internal acknowledgement of your supporters, however your team prefers
+          Join a shared moment of pause at 12:00 noon on the day — a brief,
+          joyful acknowledgement of your supporters, however your team prefers
           to do that.
         </p>
       </aside>
