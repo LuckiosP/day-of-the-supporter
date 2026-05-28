@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF8F5"/>
+      <stop offset="100%" style="stop-color:#F5F0EA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Decorative accent -->
+  <circle cx="1050" cy="120" r="180" fill="#C17F59" opacity="0.08"/>
+  <circle cx="150" cy="580" r="120" fill="#8A9A7B" opacity="0.1"/>
+
+  <!-- Header -->
+  <text x="600" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#78716C" letter-spacing="4">
+    DAY OF THE SUPPORTER
+  </text>
+
+  <!-- Main prompt -->
+  <text x="600" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#292524" font-style="italic">
+    Our supporters mean the world to us because&
+  </text>
+
+  <!-- Space for charity's sentence (placeholder line) -->
+  <line x1="200" y1="380" x2="1000" y2="380" stroke="#D6D3D1" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#A8A29E">
+    Write your one sentence here
+  </text>
+
+  <!-- Optional charity name area -->
+  <text x="600" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#78716C">
+    [Your charity name]
+  </text>
+
+  <!-- Hashtag -->
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#C17F59" letter-spacing="1">
+    #DayOfTheSupporter
+  </text>
+</svg>
