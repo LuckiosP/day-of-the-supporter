@@ -1,6 +1,7 @@
 export type TemplateFormat = {
   label: string;
   href: string;
+  filename: string;
 };
 
 export type DownloadTemplate = {
@@ -21,7 +22,11 @@ export const DOWNLOAD_TEMPLATES: DownloadTemplate[] = [
     aspectRatio: "Landscape (16:9)",
     preview: "/templates/supporter-love-note.svg",
     formats: [
-      { label: "SVG (editable)", href: "/templates/supporter-love-note.svg" },
+      {
+        label: "SVG (editable)",
+        href: "/templates/supporter-love-note.svg",
+        filename: "dots-supporter-love-note.svg",
+      },
     ],
   },
   {
@@ -32,7 +37,11 @@ export const DOWNLOAD_TEMPLATES: DownloadTemplate[] = [
     aspectRatio: "Landscape (16:9)",
     preview: "/templates/celebrating-supporters.svg",
     formats: [
-      { label: "SVG (editable)", href: "/templates/celebrating-supporters.svg" },
+      {
+        label: "SVG (editable)",
+        href: "/templates/celebrating-supporters.svg",
+        filename: "dots-celebrating-supporters.svg",
+      },
     ],
   },
   {
@@ -43,7 +52,11 @@ export const DOWNLOAD_TEMPLATES: DownloadTemplate[] = [
     aspectRatio: "Square (1:1)",
     preview: "/templates/love-note-square.svg",
     formats: [
-      { label: "SVG (editable)", href: "/templates/love-note-square.svg" },
+      {
+        label: "SVG (editable)",
+        href: "/templates/love-note-square.svg",
+        filename: "dots-love-note-square.svg",
+      },
     ],
   },
   {
@@ -54,7 +67,11 @@ export const DOWNLOAD_TEMPLATES: DownloadTemplate[] = [
     aspectRatio: "Landscape (16:9)",
     preview: "/templates/love-note-minimal.svg",
     formats: [
-      { label: "SVG (editable)", href: "/templates/love-note-minimal.svg" },
+      {
+        label: "SVG (editable)",
+        href: "/templates/love-note-minimal.svg",
+        filename: "dots-love-note-minimal.svg",
+      },
     ],
   },
 ];

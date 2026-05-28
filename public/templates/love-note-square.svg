@@ -19,7 +19,7 @@
     Our supporters mean the world
   </text>
   <text x="540" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#292524" font-style="italic">
-    to us because&
+    to us because&#8230;
   </text>
 
   <line x1="140" y1="560" x2="940" y2="560" stroke="#D6D3D1" stroke-width="2" stroke-dasharray="8 8"/>

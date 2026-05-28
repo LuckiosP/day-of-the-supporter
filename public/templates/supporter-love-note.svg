@@ -20,7 +20,7 @@
 
   <!-- Main prompt -->
   <text x="600" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#292524" font-style="italic">
-    Our supporters mean the world to us because…
+    Our supporters mean the world to us because&#8230;
   </text>
 
   <!-- Space for charity's sentence (placeholder line) -->

@@ -45,7 +45,7 @@ export default function TemplatesPage() {
                   <a
                     key={format.href}
                     href={format.href}
-                    download
+                    download={format.filename}
                     className="inline-flex items-center rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-medium text-stone-800 transition-colors hover:border-stone-400 hover:bg-stone-50"
                   >
                     Download {format.label}
