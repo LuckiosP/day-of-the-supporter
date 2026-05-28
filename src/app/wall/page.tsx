@@ -3,7 +3,11 @@ import { MessageCard } from "@/components/MessageCard";
 import { MessageForm } from "@/components/MessageForm";
 import { PageHeader } from "@/components/PageHeader";
 import { DOTS_HASHTAG } from "@/lib/constants";
-import { fetchLoveNotes, isSupabaseConfigured } from "@/lib/supabase/server";
+import {
+  getSupabaseConfigError,
+  isSupabaseConfigured,
+} from "@/lib/supabase/client";
+import { fetchLoveNotes } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Wall of gratitude",
@@ -11,6 +15,7 @@ export const metadata = {
 
 export default async function WallPage() {
   const configured = isSupabaseConfigured();
+  const configError = getSupabaseConfigError();
   const messages = configured ? await fetchLoveNotes() : [];
 
   return (
@@ -22,12 +27,16 @@ export default async function WallPage() {
 
       {!configured && (
         <div className="mb-10 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
-          The message board needs Supabase to be configured. Add your project
-          URL and anon key to the environment variables, then run the SQL in{" "}
-          <code className="rounded bg-amber-100 px-1.5 py-0.5">
-            supabase/schema.sql
-          </code>
-          .
+          {configError ?? (
+            <>
+              The message board needs Supabase to be configured. Add your project
+              URL and anon key to the environment variables, then run the SQL in{" "}
+              <code className="rounded bg-amber-100 px-1.5 py-0.5">
+                supabase/schema.sql
+              </code>
+              .
+            </>
+          )}
         </div>
       )}
 

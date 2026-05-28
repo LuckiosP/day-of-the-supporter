@@ -1,6 +1,9 @@
 "use client";
 
-import { createBrowserClient } from "@/lib/supabase/client";
+import {
+  createBrowserClient,
+  getSupabaseConfigError,
+} from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -26,10 +29,11 @@ export function MessageForm({ disabled = false }: MessageFormProps) {
     }
 
     const supabase = createBrowserClient();
+    const configError = getSupabaseConfigError();
 
-    if (!supabase) {
+    if (!supabase || configError) {
       setStatus("error");
-      setErrorMessage("Message board is not configured yet.");
+      setErrorMessage(configError ?? "Message board is not configured yet.");
       return;
     }
 
@@ -44,7 +48,11 @@ export function MessageForm({ disabled = false }: MessageFormProps) {
 
     if (error) {
       setStatus("error");
-      setErrorMessage(error.message);
+      setErrorMessage(
+        error.message.includes("<!DOCTYPE") || error.message.includes("404")
+          ? "Could not reach Supabase. Check NEXT_PUBLIC_SUPABASE_URL in Vercel — it must be https://xxxxx.supabase.co"
+          : error.message,
+      );
       return;
     }
 
