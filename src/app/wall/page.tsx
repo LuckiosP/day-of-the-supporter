@@ -3,7 +3,7 @@ import { MessageCard } from "@/components/MessageCard";
 import { MessageForm } from "@/components/MessageForm";
 import { PageHeader } from "@/components/PageHeader";
 import { DOTS_HASHTAG } from "@/lib/constants";
-import { fetchLoveNotes, isSupabaseConfigured } from "@/lib/supabase";
+import { fetchLoveNotes, isSupabaseConfigured } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Wall of gratitude",

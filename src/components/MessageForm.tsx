@@ -1,5 +1,6 @@
 "use client";
 
+import { createBrowserClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -24,37 +25,34 @@ export function MessageForm({ disabled = false }: MessageFormProps) {
       return;
     }
 
+    const supabase = createBrowserClient();
+
+    if (!supabase) {
+      setStatus("error");
+      setErrorMessage("Message board is not configured yet.");
+      return;
+    }
+
     setStatus("loading");
     setErrorMessage("");
 
-    try {
-      const response = await fetch("/api/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          organization_name: organizationName,
-          message,
-          supporter_name: supporterName || undefined,
-        }),
-      });
+    const { error } = await supabase.from("love_notes").insert({
+      organization_name: organizationName.trim(),
+      message: message.trim(),
+      supporter_name: supporterName.trim() || null,
+    });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error ?? "Something went wrong.");
-      }
-
-      setOrganizationName("");
-      setMessage("");
-      setSupporterName("");
-      setStatus("success");
-      router.refresh();
-    } catch (error) {
+    if (error) {
       setStatus("error");
-      setErrorMessage(
-        error instanceof Error ? error.message : "Something went wrong.",
-      );
+      setErrorMessage(error.message);
+      return;
     }
+
+    setOrganizationName("");
+    setMessage("");
+    setSupporterName("");
+    setStatus("success");
+    router.refresh();
   }
 
   return (
