@@ -41,7 +41,7 @@ export function MobileNav() {
       </button>
 
       {open && (
-        <nav className="absolute left-0 right-0 top-full border-b border-accent/10 bg-cream px-6 py-4">
+        <nav className="absolute left-0 right-0 top-full z-50 border-b border-accent/10 bg-cream px-6 py-4 shadow-md">
           <EventDate variant="compact" className="mb-4" />
           <ul className="space-y-3">
             {NAV_LINKS.map((link) => (

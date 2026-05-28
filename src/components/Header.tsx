@@ -5,7 +5,7 @@ import { NAV_LINKS, SITE_FULL_NAME, SITE_NAME } from "@/lib/constants";
 
 export function Header() {
   return (
-    <header className="relative border-b border-accent/10 bg-cream/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-accent/10 bg-cream/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="group flex flex-col gap-0.5">
           <span className="font-serif text-xl font-medium tracking-tight text-stone-900">
