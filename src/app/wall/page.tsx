@@ -5,14 +5,18 @@ import {
   getSupabaseConfigError,
   isSupabaseConfigured,
 } from "@/lib/supabase/client";
+import { fetchLoveNotes } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Wall of gratitude",
 };
 
-export default function WallPage() {
+export const dynamic = "force-dynamic";
+
+export default async function WallPage() {
   const configured = isSupabaseConfigured();
   const configError = getSupabaseConfigError();
+  const messages = configured ? await fetchLoveNotes() : [];
 
   return (
     <Container className="py-16 sm:py-24">
@@ -36,7 +40,7 @@ export default function WallPage() {
         </div>
       )}
 
-      <WallBoard disabled={!configured} />
+      <WallBoard disabled={!configured} initialMessages={messages} />
     </Container>
   );
 }
